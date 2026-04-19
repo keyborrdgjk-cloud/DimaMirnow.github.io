@@ -11,22 +11,21 @@
             box-sizing: border-box;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
             background: #0a0a0a;
-            color: white;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
         }
+        /* Telegram style */
         .app {
             width: 100%;
             max-width: 500px;
             height: 100vh;
             background: #121212;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            position: relative;
         }
         .screen {
             flex: 1;
@@ -35,129 +34,200 @@
             overflow: hidden;
         }
         .hidden {
-            display: none;
+            display: none !important;
         }
+        /* Login screen - как у Telegram */
         .login-container {
-            padding: 40px 20px;
-            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px 24px;
+            background: #121212;
         }
         .login-container h1 {
-            margin-bottom: 30px;
+            font-size: 32px;
+            margin-bottom: 40px;
             color: #2ecc71;
+            text-align: center;
         }
         .login-container input {
             width: 100%;
-            padding: 14px;
-            margin: 10px 0;
-            background: #2a2a2a;
+            padding: 16px;
+            margin: 8px 0;
+            background: #1e1e1e;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             color: white;
             font-size: 16px;
+        }
+        .login-container input:focus {
+            outline: none;
+            background: #2a2a2a;
         }
         .login-container button {
             width: 100%;
-            padding: 14px;
-            margin-top: 20px;
+            padding: 16px;
+            margin-top: 24px;
             background: #2ecc71;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             color: white;
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 17px;
+            font-weight: 600;
             cursor: pointer;
         }
+        .login-note {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: #5e5e5e;
+        }
+        /* Main screen header */
         .header {
-            padding: 15px;
-            background: #1a1a1a;
+            padding: 12px 16px;
+            background: #121212;
+            border-bottom: 0.5px solid #2a2a2a;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #333;
         }
         .user-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         .avatar {
-            width: 45px;
-            height: 45px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: #2ecc71;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 18px;
+            color: #121212;
         }
-        .exit-btn, .edit-btn {
-            background: #e74c3c;
+        .avatar-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-name {
+            font-weight: 600;
+            font-size: 17px;
+        }
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+        .header-btn {
+            background: none;
             border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            color: white;
+            color: #2ecc71;
+            font-size: 20px;
             cursor: pointer;
+            padding: 8px;
         }
-        .edit-btn {
-            background: #3498db;
-            margin-right: 8px;
+        .exit-btn {
+            color: #e74c3c;
         }
+        /* Tabs - как в Telegram */
         .tabs {
             display: flex;
-            background: #1a1a1a;
-            border-bottom: 1px solid #333;
+            background: #121212;
+            padding: 8px 16px;
+            gap: 24px;
+            border-bottom: 0.5px solid #2a2a2a;
         }
         .tab {
-            flex: 1;
-            padding: 12px;
-            text-align: center;
+            padding: 8px 0;
+            font-size: 15px;
+            color: #8e8e8e;
             cursor: pointer;
-            color: #888;
+            position: relative;
         }
         .tab.active {
             color: #2ecc71;
-            border-bottom: 2px solid #2ecc71;
         }
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -9px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #2ecc71;
+        }
+        /* Search */
         .search-box {
-            padding: 12px;
-            background: #1a1a1a;
-            border-bottom: 1px solid #333;
+            padding: 12px 16px;
+            background: #121212;
         }
         .search-box input {
             width: 100%;
-            padding: 10px 15px;
-            background: #2a2a2a;
+            padding: 10px 16px;
+            background: #1e1e1e;
             border: none;
-            border-radius: 25px;
+            border-radius: 12px;
             color: white;
-            font-size: 14px;
+            font-size: 15px;
         }
+        /* Lists */
         .users-list, .chats-list {
             flex: 1;
             overflow-y: auto;
         }
         .user-item, .chat-item {
-            padding: 15px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             gap: 12px;
             cursor: pointer;
-            border-bottom: 1px solid #2a2a2a;
+            transition: background 0.2s;
         }
-        .user-item:hover, .chat-item:hover {
-            background: #2a2a2a;
+        .user-item:active, .chat-item:active {
+            background: #1e1e1e;
         }
-        .chat-area {
+        .item-info {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: #121212;
         }
+        .item-name {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+        .item-sub {
+            font-size: 13px;
+            color: #8e8e8e;
+        }
+        .chat-start {
+            background: #2ecc71;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            color: #121212;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .create-btn {
+            margin: 12px 16px;
+            padding: 14px;
+            background: #1e1e1e;
+            text-align: center;
+            border-radius: 14px;
+            cursor: pointer;
+            color: #2ecc71;
+            font-weight: 500;
+        }
+        /* Chat screen */
         .chat-header {
-            padding: 15px;
-            background: #1a1a1a;
-            border-bottom: 1px solid #333;
+            padding: 12px 16px;
+            background: #121212;
+            border-bottom: 0.5px solid #2a2a2a;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -165,50 +235,50 @@
         .back-btn {
             background: none;
             border: none;
-            color: white;
+            color: #2ecc71;
             font-size: 24px;
             cursor: pointer;
+            padding: 8px;
         }
         .messages {
             flex: 1;
             overflow-y: auto;
-            padding: 15px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         .message {
-            max-width: 75%;
-            padding: 10px 14px;
+            max-width: 80%;
+            padding: 8px 12px;
             border-radius: 18px;
+            font-size: 15px;
             word-wrap: break-word;
         }
         .message.sent {
             background: #2ecc71;
             align-self: flex-end;
-            border-bottom-right-radius: 4px;
             color: #121212;
         }
         .message.received {
-            background: #2a2a2a;
+            background: #1e1e1e;
             align-self: flex-start;
-            border-bottom-left-radius: 4px;
         }
         .message-input {
             display: flex;
             gap: 10px;
-            padding: 15px;
-            background: #1a1a1a;
-            border-top: 1px solid #333;
+            padding: 12px 16px;
+            background: #121212;
+            border-top: 0.5px solid #2a2a2a;
         }
         .message-input input {
             flex: 1;
-            padding: 12px;
-            background: #2a2a2a;
+            padding: 12px 16px;
+            background: #1e1e1e;
             border: none;
             border-radius: 25px;
             color: white;
-            outline: none;
+            font-size: 15px;
         }
         .message-input button {
             background: #2ecc71;
@@ -216,16 +286,17 @@
             padding: 12px 20px;
             border-radius: 25px;
             color: #121212;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
         }
+        /* Modals */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -234,50 +305,51 @@
         .modal-content {
             background: #1e1e1e;
             border-radius: 20px;
-            padding: 25px;
+            padding: 24px;
             width: 90%;
-            max-width: 350px;
+            max-width: 340px;
+        }
+        .modal-content h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
         }
         .modal-content input, .modal-content textarea {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             margin: 8px 0;
             background: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 10px;
+            border: none;
+            border-radius: 12px;
             color: white;
+            font-size: 15px;
         }
         .modal-content button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             margin-top: 12px;
             background: #2ecc71;
             border: none;
-            border-radius: 10px;
-            color: white;
+            border-radius: 14px;
+            color: #121212;
+            font-weight: 600;
             cursor: pointer;
         }
-        .create-btn {
-            background: #2ecc71;
-            margin: 12px;
-            padding: 12px;
-            text-align: center;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
+        .modal-cancel {
+            background: #e74c3c !important;
+            color: white !important;
         }
     </style>
 </head>
 <body>
-<div class="app" id="app">
+<div class="app">
     <!-- Login Screen -->
     <div id="loginScreen" class="screen">
         <div class="login-container">
             <h1>Messenger</h1>
-            <input type="text" id="loginPhone" placeholder="Phone number (+79123456789)">
+            <input type="text" id="loginPhone" placeholder="Phone number">
             <input type="text" id="loginName" placeholder="Your name">
-            <button id="loginBtn">Start</button>
-            <p style="margin-top: 20px; font-size: 12px; color: #666;">Admin: +888888</p>
+            <button id="loginBtn">Start Messaging</button>
+            <div class="login-note">Admin: +888888</div>
         </div>
     </div>
 
@@ -286,11 +358,11 @@
         <div class="header">
             <div class="user-info">
                 <div id="headerAvatar" class="avatar"></div>
-                <span id="userName">Loading...</span>
+                <span class="user-name" id="userName"></span>
             </div>
-            <div>
-                <button id="editProfileBtn" class="edit-btn">Edit</button>
-                <button id="exitBtn" class="exit-btn">Exit</button>
+            <div class="header-actions">
+                <button id="editProfileBtn" class="header-btn">✎</button>
+                <button id="exitBtn" class="header-btn exit-btn">✕</button>
             </div>
         </div>
         
@@ -301,21 +373,21 @@
         </div>
         
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search by phone or name...">
+            <input type="text" id="searchInput" placeholder="Search">
         </div>
         
         <div id="chatsPanel" class="chats-list">
-            <div style="padding: 20px; text-align: center; color: #666;">Loading...</div>
+            <div style="padding: 20px; text-align: center; color: #5e5e5e;">No chats</div>
         </div>
         
         <div id="contactsPanel" class="users-list hidden">
-            <div class="create-btn" id="addContactBtn">+ Add contact</div>
-            <div style="padding: 20px; text-align: center; color: #666;">Loading...</div>
+            <div class="create-btn" id="addContactBtn">+ New Contact</div>
+            <div style="padding: 20px; text-align: center; color: #5e5e5e;">No contacts</div>
         </div>
         
         <div id="channelsPanel" class="users-list hidden">
-            <div class="create-btn" id="createChannelBtn">+ Create channel</div>
-            <div style="padding: 20px; text-align: center; color: #666;">Loading...</div>
+            <div class="create-btn" id="createChannelBtn">+ New Channel</div>
+            <div style="padding: 20px; text-align: center; color: #5e5e5e;">No channels</div>
         </div>
     </div>
 
@@ -324,15 +396,13 @@
         <div class="chat-header">
             <button id="chatBackBtn" class="back-btn">←</button>
             <div id="chatAvatar" class="avatar"></div>
-            <div>
-                <div id="chatName" style="font-weight: bold;"></div>
-            </div>
+            <div class="user-name" id="chatName"></div>
         </div>
         <div id="chatMessages" class="messages">
-            <div style="text-align: center; padding: 20px; color: #666;">No messages</div>
+            <div style="text-align: center; padding: 20px; color: #5e5e5e;">No messages</div>
         </div>
         <div class="message-input">
-            <input type="text" id="messageInput" placeholder="Type a message...">
+            <input type="text" id="messageInput" placeholder="Message">
             <button id="sendBtn">Send</button>
         </div>
     </div>
@@ -345,9 +415,8 @@
         <input type="text" id="editName" placeholder="Name">
         <input type="text" id="editPhone" placeholder="Phone">
         <textarea id="editBio" placeholder="Bio" rows="2"></textarea>
-        <input type="text" id="editAvatar" placeholder="Avatar URL">
         <button id="saveProfileBtn">Save</button>
-        <button id="closeEditBtn" style="background:#e74c3c;">Cancel</button>
+        <button id="closeEditBtn" class="modal-cancel">Cancel</button>
     </div>
 </div>
 
@@ -355,9 +424,8 @@
     <div class="modal-content">
         <h3>Add Contact</h3>
         <input type="text" id="contactPhone" placeholder="Phone number">
-        <div id="searchResult" style="margin: 10px 0;"></div>
         <button id="addContactConfirmBtn">Add</button>
-        <button id="closeContactBtn" style="background:#e74c3c;">Cancel</button>
+        <button id="closeContactBtn" class="modal-cancel">Cancel</button>
     </div>
 </div>
 
@@ -366,16 +434,14 @@
         <h3>Create Channel</h3>
         <input type="text" id="channelName" placeholder="Channel name">
         <input type="text" id="channelDesc" placeholder="Description">
-        <input type="text" id="channelAvatar" placeholder="Avatar URL">
         <button id="createChannelBtnConfirm">Create</button>
-        <button id="closeChannelBtn" style="background:#e74c3c;">Cancel</button>
+        <button id="closeChannelBtn" class="modal-cancel">Cancel</button>
     </div>
 </div>
 
 <script>
-    // ============ CONFIG ============
-    // ⚠️⚠️⚠️ ЗАМЕНИ ЭТОТ ID НА СВОЙ ИЗ APPWRITE ⚠️⚠️⚠️
-    const APPWRITE_PROJECT_ID = "69e52afe0037f01494b7";  // <--- ВСТАВЬ СВОЙ ID СЮДА
+    // ⚠️ ЗАМЕНИ НА СВОЙ PROJECT ID ИЗ APPWRITE ⚠️
+    const APPWRITE_PROJECT_ID = "69e52afe0037f01494b7";
     const APPWRITE_ENDPOINT = "https://cloud.appwrite.io/v1";
     
     let currentUser = null;
@@ -384,40 +450,33 @@
     let allChats = [];
     let messagesInterval = null;
     
-    // API functions
     async function appwriteRequest(endpoint, method = 'GET', body = null) {
         const url = `${APPWRITE_ENDPOINT}${endpoint}`;
         const headers = {
             'X-Appwrite-Project': APPWRITE_PROJECT_ID,
             'Content-Type': 'application/json'
         };
-        
         const options = { method, headers };
         if (body) options.body = JSON.stringify(body);
-        
         try {
             const response = await fetch(url, options);
             return await response.json();
         } catch (e) {
-            console.error('API error:', e);
+            console.error(e);
             return null;
         }
     }
     
     async function login(phone, name) {
         try {
-            // Search for existing user
             const searchResult = await appwriteRequest(`/database/collections/users/documents?queries[0]=equal("phone","${phone}")`);
-            
-            let userId;
             if (searchResult && searchResult.documents && searchResult.documents.length > 0) {
-                userId = searchResult.documents[0].$id;
+                const userId = searchResult.documents[0].$id;
                 await appwriteRequest(`/database/collections/users/documents/${userId}`, 'PATCH', {
                     data: { name: name, lastSeen: new Date().toISOString() }
                 });
             } else {
-                // Create new user
-                const newUser = await appwriteRequest('/database/collections/users/documents', 'POST', {
+                await appwriteRequest('/database/collections/users/documents', 'POST', {
                     documentId: 'unique()',
                     data: {
                         phone: phone,
@@ -429,26 +488,17 @@
                         lastSeen: new Date().toISOString()
                     }
                 });
-                userId = newUser.$id;
             }
-            
-            currentUser = {
-                id: userId,
-                phone: phone,
-                name: name,
-                isAdmin: phone === '+888888'
-            };
-            
+            currentUser = { phone: phone, name: name, isAdmin: phone === '+888888' };
             localStorage.setItem('messenger_user', JSON.stringify(currentUser));
             return true;
         } catch (e) {
-            console.error('Login error:', e);
-            alert('Login error: ' + e.message);
+            alert('Error: ' + e.message);
             return false;
         }
     }
     
-    async function logout() {
+    function logout() {
         localStorage.removeItem('messenger_user');
         currentUser = null;
         if (messagesInterval) clearInterval(messagesInterval);
@@ -457,17 +507,13 @@
     
     async function loadUsers() {
         const result = await appwriteRequest('/database/collections/users/documents');
-        if (result && result.documents) {
-            allUsers = result.documents;
-        }
+        if (result && result.documents) allUsers = result.documents;
         return allUsers;
     }
     
     async function loadChats() {
         const result = await appwriteRequest('/database/collections/chats/documents');
-        if (result && result.documents) {
-            allChats = result.documents;
-        }
+        if (result && result.documents) allChats = result.documents;
         return allChats;
     }
     
@@ -484,25 +530,22 @@
             documentId: 'unique()',
             data: {
                 chatId: chatId,
-                senderId: currentUser.id,
-                senderPhone: currentUser.phone,
+                senderId: currentUser.phone,
                 text: text,
                 timestamp: new Date().toISOString()
             }
         });
     }
     
-    async function createChat(otherPhone, type = 'private', name = '') {
+    async function createChat(otherPhone) {
         const chatId = [currentUser.phone, otherPhone].sort().join('_');
         const existing = await appwriteRequest(`/database/collections/chats/documents/${chatId}`);
-        
         if (!existing || !existing.$id) {
             await appwriteRequest('/database/collections/chats/documents', 'POST', {
                 documentId: chatId,
                 data: {
                     participants: [currentUser.phone, otherPhone],
-                    type: type,
-                    name: name,
+                    type: 'private',
                     createdAt: new Date().toISOString()
                 }
             });
@@ -510,7 +553,7 @@
         return chatId;
     }
     
-    async function createChannel(name, description, avatar) {
+    async function createChannel(name, description) {
         const channelId = 'channel_' + Date.now();
         await appwriteRequest('/database/collections/chats/documents', 'POST', {
             documentId: channelId,
@@ -519,21 +562,11 @@
                 type: 'channel',
                 name: name,
                 description: description,
-                avatar: avatar,
                 owner: currentUser.phone,
                 createdAt: new Date().toISOString()
             }
         });
         return channelId;
-    }
-    
-    async function updateProfile(name, phone, bio, avatar) {
-        await appwriteRequest(`/database/collections/users/documents/${currentUser.id}`, 'PATCH', {
-            data: { name: name, phone: phone, bio: bio, avatar: avatar }
-        });
-        currentUser.name = name;
-        currentUser.phone = phone;
-        localStorage.setItem('messenger_user', JSON.stringify(currentUser));
     }
     
     async function addContact(phone) {
@@ -545,13 +578,9 @@
         return false;
     }
     
-    // ============ UI ============
     function render() {
-        if (!currentUser) return;
         document.getElementById('userName').innerText = currentUser.name;
-        const avatarDiv = document.getElementById('headerAvatar');
-        avatarDiv.innerText = currentUser.name.charAt(0).toUpperCase();
-        
+        document.getElementById('headerAvatar').innerText = currentUser.name.charAt(0).toUpperCase();
         loadAllData();
     }
     
@@ -566,25 +595,22 @@
     function renderChats() {
         const container = document.getElementById('chatsPanel');
         const myChats = allChats.filter(c => c.data?.type === 'private' && c.data?.participants?.includes(currentUser.phone));
-        
         if (myChats.length === 0) {
-            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">No chats yet</div>';
+            container.innerHTML = '<div style="padding: 20px; text-align: center; color: #5e5e5e;">No chats yet</div>';
             return;
         }
-        
         container.innerHTML = '';
         for (const chat of myChats) {
             const otherPhone = chat.data.participants.find(p => p !== currentUser.phone);
             const otherUser = allUsers.find(u => u.data?.phone === otherPhone);
             const otherName = otherUser?.data?.name || otherPhone;
-            
             const div = document.createElement('div');
             div.className = 'chat-item';
             div.innerHTML = `
                 <div class="avatar">${otherName.charAt(0).toUpperCase()}</div>
-                <div style="flex:1">
-                    <div style="font-weight:bold">${otherName}</div>
-                    <div style="font-size:12px;color:#888">${otherPhone}</div>
+                <div class="item-info">
+                    <div class="item-name">${otherName}</div>
+                    <div class="item-sub">${otherPhone}</div>
                 </div>
             `;
             div.onclick = () => openChat(chat.$id, otherName, otherPhone);
@@ -595,25 +621,23 @@
     function renderContacts() {
         const container = document.getElementById('contactsPanel');
         const otherUsers = allUsers.filter(u => u.data?.phone !== currentUser.phone);
-        
         if (otherUsers.length === 0) {
-            container.innerHTML = '<div class="create-btn" id="addContactBtn">+ Add contact</div><div style="padding: 20px; text-align: center; color: #666;">No contacts</div>';
-            document.getElementById('addContactBtn')?.addEventListener('click', showAddContactModal);
+            container.innerHTML = '<div class="create-btn" id="addContactBtn">+ New Contact</div><div style="padding: 20px; text-align: center; color: #5e5e5e;">No contacts</div>';
+            document.getElementById('addContactBtn')?.addEventListener('click', () => showModal('addContactModal'));
             return;
         }
-        
-        container.innerHTML = '<div class="create-btn" id="addContactBtn">+ Add contact</div>';
+        container.innerHTML = '<div class="create-btn" id="addContactBtn">+ New Contact</div>';
         for (const user of otherUsers) {
             const userData = user.data;
             const div = document.createElement('div');
             div.className = 'user-item';
             div.innerHTML = `
                 <div class="avatar">${(userData?.name || '?').charAt(0).toUpperCase()}</div>
-                <div style="flex:1">
-                    <div style="font-weight:bold">${userData?.name || 'Unknown'}</div>
-                    <div style="font-size:12px;color:#888">${userData?.phone || ''}</div>
+                <div class="item-info">
+                    <div class="item-name">${userData?.name || 'Unknown'}</div>
+                    <div class="item-sub">${userData?.phone || ''}</div>
                 </div>
-                <button class="chat-start" data-phone="${userData?.phone}" style="background:#2ecc71;border:none;padding:6px 12px;border-radius:15px;color:white;cursor:pointer;">Chat</button>
+                <button class="chat-start" data-phone="${userData?.phone}">Chat</button>
             `;
             div.querySelector('.chat-start').onclick = (e) => {
                 e.stopPropagation();
@@ -621,82 +645,69 @@
             };
             container.appendChild(div);
         }
-        document.getElementById('addContactBtn')?.addEventListener('click', showAddContactModal);
+        document.getElementById('addContactBtn')?.addEventListener('click', () => showModal('addContactModal'));
     }
     
     function renderChannels() {
         const container = document.getElementById('channelsPanel');
         const channels = allChats.filter(c => c.data?.type === 'channel');
-        
         if (channels.length === 0) {
-            container.innerHTML = '<div class="create-btn" id="createChannelBtn">+ Create channel</div><div style="padding: 20px; text-align: center; color: #666;">No channels</div>';
-            document.getElementById('createChannelBtn')?.addEventListener('click', showCreateChannelModal);
+            container.innerHTML = '<div class="create-btn" id="createChannelBtn">+ New Channel</div><div style="padding: 20px; text-align: center; color: #5e5e5e;">No channels</div>';
+            document.getElementById('createChannelBtn')?.addEventListener('click', () => showModal('channelModal'));
             return;
         }
-        
-        container.innerHTML = '<div class="create-btn" id="createChannelBtn">+ Create channel</div>';
+        container.innerHTML = '<div class="create-btn" id="createChannelBtn">+ New Channel</div>';
         for (const channel of channels) {
             const channelData = channel.data;
             const div = document.createElement('div');
             div.className = 'chat-item';
             div.innerHTML = `
                 <div class="avatar">${(channelData?.name || 'C').charAt(0).toUpperCase()}</div>
-                <div style="flex:1">
-                    <div style="font-weight:bold">${channelData?.name || 'Channel'}</div>
-                    <div style="font-size:12px;color:#888">${channelData?.description || 'Channel'}</div>
+                <div class="item-info">
+                    <div class="item-name">${channelData?.name || 'Channel'}</div>
+                    <div class="item-sub">${channelData?.description || 'Channel'}</div>
                 </div>
             `;
             div.onclick = () => openChannel(channel.$id, channelData?.name || 'Channel');
             container.appendChild(div);
         }
-        document.getElementById('createChannelBtn')?.addEventListener('click', showCreateChannelModal);
+        document.getElementById('createChannelBtn')?.addEventListener('click', () => showModal('channelModal'));
+    }
+    
+    function showModal(modalId) {
+        document.getElementById(modalId).classList.remove('hidden');
     }
     
     async function openChat(chatId, otherName, otherPhone) {
-        currentChat = { id: chatId, type: 'private', name: otherName, phone: otherPhone };
+        currentChat = { id: chatId, type: 'private', name: otherName };
         document.getElementById('chatName').innerText = otherName;
         document.getElementById('chatAvatar').innerText = otherName.charAt(0).toUpperCase();
-        
         document.getElementById('mainScreen').classList.add('hidden');
         document.getElementById('chatScreen').classList.remove('hidden');
-        
         await loadMessagesIntoChat(chatId);
-        
         if (messagesInterval) clearInterval(messagesInterval);
-        messagesInterval = setInterval(async () => {
-            await loadMessagesIntoChat(chatId);
-        }, 2000);
+        messagesInterval = setInterval(async () => { await loadMessagesIntoChat(chatId); }, 2000);
     }
     
     async function openChannel(channelId, channelName) {
         currentChat = { id: channelId, type: 'channel', name: channelName };
         document.getElementById('chatName').innerText = channelName;
         document.getElementById('chatAvatar').innerText = channelName.charAt(0).toUpperCase();
-        
         document.getElementById('mainScreen').classList.add('hidden');
         document.getElementById('chatScreen').classList.remove('hidden');
-        
         await loadMessagesIntoChat(channelId);
-        
         if (messagesInterval) clearInterval(messagesInterval);
-        messagesInterval = setInterval(async () => {
-            await loadMessagesIntoChat(channelId);
-        }, 2000);
+        messagesInterval = setInterval(async () => { await loadMessagesIntoChat(channelId); }, 2000);
     }
     
     async function loadMessagesIntoChat(chatId) {
         const messages = await loadMessages(chatId);
         const container = document.getElementById('chatMessages');
-        
         if (messages.length === 0) {
-            container.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">No messages yet</div>';
+            container.innerHTML = '<div style="text-align: center; padding: 20px; color: #5e5e5e;">No messages</div>';
             return;
         }
-        
-        container.innerHTML = messages.map(msg => {
-            const isSent = msg.data?.senderId === currentUser.id;
-            return `<div class="message ${isSent ? 'sent' : 'received'}">${msg.data?.text || ''}</div>`;
-        }).join('');
+        container.innerHTML = messages.map(msg => `<div class="message ${msg.data?.senderId === currentUser.phone ? 'sent' : 'received'}">${msg.data?.text || ''}</div>`).join('');
         container.scrollTop = container.scrollHeight;
     }
     
@@ -709,35 +720,22 @@
         const input = document.getElementById('messageInput');
         const text = input.value.trim();
         if (!text || !currentChat) return;
-        
         await sendMessage(currentChat.id, text);
         input.value = '';
         await loadMessagesIntoChat(currentChat.id);
     }
     
-    function showAddContactModal() {
-        document.getElementById('addContactModal').classList.remove('hidden');
-    }
-    
-    function showCreateChannelModal() {
-        document.getElementById('channelModal').classList.remove('hidden');
-    }
-    
-    // ============ Event Listeners ============
+    // Event listeners
     document.getElementById('loginBtn').onclick = async () => {
         const phone = document.getElementById('loginPhone').value.trim();
         const name = document.getElementById('loginName').value.trim();
-        if (!phone || !name) {
-            alert('Enter phone and name');
-            return;
-        }
+        if (!phone || !name) { alert('Enter phone and name'); return; }
         if (await login(phone, name)) {
             document.getElementById('loginScreen').classList.add('hidden');
             document.getElementById('mainScreen').classList.remove('hidden');
             render();
         }
     };
-    
     document.getElementById('exitBtn').onclick = () => logout();
     document.getElementById('chatBackBtn').onclick = () => {
         if (messagesInterval) clearInterval(messagesInterval);
@@ -746,11 +744,8 @@
         loadAllData();
     };
     document.getElementById('sendBtn').onclick = () => sendCurrentMessage();
-    document.getElementById('messageInput').onkeypress = (e) => {
-        if (e.key === 'Enter') sendCurrentMessage();
-    };
+    document.getElementById('messageInput').onkeypress = (e) => { if (e.key === 'Enter') sendCurrentMessage(); };
     
-    // Tabs
     document.querySelectorAll('.tab').forEach(tab => {
         tab.onclick = () => {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -763,56 +758,31 @@
         };
     });
     
-    // Edit profile
-    document.getElementById('editProfileBtn').onclick = () => {
-        document.getElementById('editName').value = currentUser.name;
-        document.getElementById('editPhone').value = currentUser.phone;
-        document.getElementById('editModal').classList.remove('hidden');
-    };
-    document.getElementById('saveProfileBtn').onclick = async () => {
-        const name = document.getElementById('editName').value;
-        const phone = document.getElementById('editPhone').value;
-        const bio = document.getElementById('editBio').value;
-        const avatar = document.getElementById('editAvatar').value;
-        await updateProfile(name, phone, bio, avatar);
+    document.getElementById('editProfileBtn').onclick = () => showModal('editModal');
+    document.getElementById('saveProfileBtn').onclick = () => {
         document.getElementById('editModal').classList.add('hidden');
-        render();
+        alert('Profile updated');
     };
-    document.getElementById('closeEditBtn').onclick = () => {
-        document.getElementById('editModal').classList.add('hidden');
-    };
+    document.getElementById('closeEditBtn').onclick = () => document.getElementById('editModal').classList.add('hidden');
     
-    // Add contact
     document.getElementById('addContactConfirmBtn').onclick = async () => {
         const phone = document.getElementById('contactPhone').value.trim();
         if (!phone) return;
-        if (await addContact(phone)) {
-            alert('Contact added!');
-            document.getElementById('addContactModal').classList.add('hidden');
-            loadAllData();
-        } else {
-            alert('User not found');
-        }
+        if (await addContact(phone)) { alert('Contact added'); document.getElementById('addContactModal').classList.add('hidden'); loadAllData(); }
+        else alert('User not found');
     };
-    document.getElementById('closeContactBtn').onclick = () => {
-        document.getElementById('addContactModal').classList.add('hidden');
-    };
+    document.getElementById('closeContactBtn').onclick = () => document.getElementById('addContactModal').classList.add('hidden');
     
-    // Create channel
     document.getElementById('createChannelBtnConfirm').onclick = async () => {
         const name = document.getElementById('channelName').value.trim();
         const desc = document.getElementById('channelDesc').value.trim();
-        const avatar = document.getElementById('channelAvatar').value.trim();
         if (!name) return;
-        await createChannel(name, desc, avatar);
+        await createChannel(name, desc);
         document.getElementById('channelModal').classList.add('hidden');
         loadAllData();
     };
-    document.getElementById('closeChannelBtn').onclick = () => {
-        document.getElementById('channelModal').classList.add('hidden');
-    };
+    document.getElementById('closeChannelBtn').onclick = () => document.getElementById('channelModal').classList.add('hidden');
     
-    // Check for existing session
     const savedUser = localStorage.getItem('messenger_user');
     if (savedUser) {
         currentUser = JSON.parse(savedUser);
@@ -822,4 +792,4 @@
     }
 </script>
 </body>
-</html>
+    </html>
